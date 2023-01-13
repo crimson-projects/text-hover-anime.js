@@ -1,0 +1,266 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  background: #28282B
+}
+
+.demo-swing {
+  --color-text: #828284;
+  --color-background: #1F1F21;
+  --color-link: #828284;
+  --color-link-hover: #FFF;
+}
+
+body {
+  font-family: 'Nunito', monospace;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
+}
+
+.js body {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.js body.render {
+  opacity: 1;
+}
+
+main {
+	position: relative;
+    width: 100%;
+}
+
+.content {
+	position: relative;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	height: 100vh;
+	overflow: hidden;
+	min-height: 650px;
+	margin: 0 auto;
+}
+
+.content--fixed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: none;
+	z-index: 100;
+	align-content: space-between;
+	pointer-events: none;
+	padding: 1.5em;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto auto 4em;
+	grid-template-areas: 	"header tagline"
+							"deco tagline"
+							"deco demos";
+}
+
+.content--layout {
+	grid-template-columns: 100%;
+	padding: 3em 0;
+}
+
+.content--fixed a {
+	pointer-events: auto;
+}
+
+/* Header */
+.codrops-header {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	z-index: 100;
+	grid-area: header;
+	align-self: start;
+	justify-self: start;
+	align-items: center;
+}
+
+.codrops-header__title {
+	font-size: 1em;
+	padding: 0.75em 0;
+	margin: 0;
+	font-weight: normal;
+}
+
+
+.codrops-header__tagline,
+.deco {
+	grid-area: tagline;
+	-webkit-writing-mode: vertical-lr;
+	writing-mode: vertical-lr;
+	text-align: right;
+	align-self: start;
+	justify-self: end;
+	margin: 0;
+	padding: 0.85em 0;
+}
+
+.codrops-header__tagline {
+	padding: 0.65em 0;
+}
+
+/* Common styles for the words */
+.word {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 0;
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@media screen and (min-width: 50em) {
+	.demos {
+		align-self: end;
+		justify-self: end;
+		display: flex;
+	}
+	.demo {
+		display: block;
+		border: 2px solid;
+		width: 12px;
+		height: 12px;
+		border-radius: 2px;
+		margin: 0 10px 0 0;
+	}
+	.demo span {
+		position: absolute;
+		display: none;
+		right: 100%;
+		top: -0.35em;
+		margin: 0 1em 0 0;
+	}
+}
+
+@media screen and (max-width: 50em) {
+	html, body {
+		overflow-x: hidden;
+		width: 100vw;
+		height: 100%;
+	}
+	.content {
+		height: auto;
+		min-height: 0;
+	}
+	.content--layout {
+		overflow: visible;
+	}
+	.content--layout {
+		padding: 1em 0 0 0;
+	}
+	.content--fixed {
+		display: block;
+		z-index: 1000;
+		position: relative;
+		padding: 0.85em;
+	}
+	.codrops-header {
+		align-items: center;
+		flex-direction: column;
+	}
+	.codrops-header__title {
+		font-weight: bold;
+		text-align: center;
+		padding-bottom: 0.25em;
+	}
+	.codrops-header__tagline {
+		-webkit-writing-mode: horizontal-tb;
+		writing-mode: horizontal-tb;
+		text-align: center;
+		padding: 0 0 1.5em;
+		font-size: 0.85em;
+	}
+	.word.word--swing {
+		font-size: 4.5em;
+	}
+}
+
+.word--swing {
+	font-size: 13vw;
+	font-family: 'Londrina Solid', serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: #0e0e19;
+	line-height: 0.725;
+	perspective: 800px;
+}
+
+.word--swing > span:first-child {
+	color: #ea757f;
+}
+
+.word--swing > span:nth-child(2) {
+	color: #7577ea;
+}
+
+.word--swing > span:nth-child(3) {
+	color: #8dea75;
+}
+
+.word--swing > span:nth-child(4) {
+	color: #e2e623;
+}
+
+.word--swing > span:nth-child(5) {
+	color: #ffc107;
+}
+
+.word--swing > span:nth-child(6) {
+	color: #6830cb;
+}
+
+.word--swing > span:nth-child(7) {
+	color: #f02424;
+}
+
+.word--swing > span:nth-child(8) {
+	color: #779ECB;
+}
+
+.word--swing svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 450px;
+	height: 510px;
+	margin: -255px 0 0 -225px;
+	pointer-events: none;
+}
+
+.word--swing svg circle {
+	fill: currentColor;
+	opacity: 0;
+	transform-origin: 50% 50%;
+}
+
+.word--swing span {
+	display: block;
+	position: relative;
+}
+
+.word--swing span span:first-of-type {
+	position: absolute;
+	font-family: 'Londrina Outline';
+}
+
+.word--swing span span:last-of-type {
+	transform-style: preserve-3d;
+}
